@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Hello World JQuery test</title>
+    <meta charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+</head>
+
+<body>
+    <div id="page_content">
+            ... content will be injected
+    </div>
+
+    <script>
+        $.getJSON("https://www.googleapis.com/youtube/v3/videos?id=OmNXCJt7K3Q&key=AIzaSyD5r6DidTnUh1vfhNJ8uLA5J1ZB0RfSoGc%20&part=snippet,contentDetails,statistics,status,topicDetails,player", function (data) {
+
+            var html = "";
+
+           // data.forEach(function (element) {
+                html += "<h1>" + data.items[0].snippet.title + "</h1>";
+                html += "<p>" + data.items[0].player.embedHtml + "</p>";
+               // html += "<p>" + element.cpr + "</p>"
+            //}, this);
+
+            $("#page_content").html(html); // inject the html into the div with id "page_content"
+        });
+    </script>
+</body>
+
+</html>
